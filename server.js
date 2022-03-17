@@ -4,21 +4,11 @@ const arguments = require('minimist')(process.argv.slice(2))
 
 
 
-// app.use(express.json())
-// app.use(express.urlencoded( {extended: true} ))
-
-// const logging= (req, res, next) => {
-//     console.log(req.body.number)
-//     next()
-// }
-
-
-
-const PORT = arguments.PORT || process.env.PORT || 5000
+const port = arguments.port || process.env.port || 5000
 
 // Start an app server
-const server = app.listen(PORT, () => {
-    console.log('App listening on port %PORT%'.replace('%PORT%',PORT))
+const server = app.listen(port, () => {
+    console.log('App listening on port %PORT%'.replace('%PORT%', port))
 });
 
 // function coinFlip() {

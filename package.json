@@ -1,6 +1,6 @@
 {
   "name": "comp-426",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Bulding an API to flip coins",
   "main": "server.js",
   "scripts": {
@@ -10,8 +10,10 @@
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "express": "^4.17.3",
+    "lsof": "^0.1.0",
     "minimist": "^1.2.5",
     "nodemon": "^2.0.15",
+    "sudo": "^1.0.3",
     "yargs": "^17.3.1"
   }
 }
