@@ -96,10 +96,15 @@ function flipACoin(call) {
 
 
 
+app.get('/app/flip', (req, res) => {
+   var flip = coinFlip()
+   res.status(200).json({ 'flip' : flip })
+})  
 
 
-app.get('/app/echo/:number', (req, res) => {
-    res.status(200).json({ 'message': req.params.number })
+app.get('/app/flips/:number', (req, res) => {
+    const finalFlips = coinFlips(req.params.number)
+    res.status(200).json({ 'raw': finalFlips, 'summary': countFlips(finalFlips) })
 
 }
 )
@@ -108,14 +113,11 @@ app.get('/app/echo/', (req, res) => {
     res.status(200).json( {'message' : req.query.number })
 })
 
-app.get('/app/echo/', logging, (req, res) => {
+app.get('/app/echo/', (req, res) => {
     res.status(200).json( {'message' : req.body.number })
 })
 
-app.get('/app/flip', (req, res) => {
-    var flip = coinFlip()
-    res.status(200).json({ 'flip' : flip })
-})
+
 
 // Default response for any other request
 app.use(function(req, res){
