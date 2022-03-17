@@ -29,10 +29,9 @@ app.get('/app/', (req, res) => {
 // Respond with status 200
     res.statusCode = 200;
 // respond with status message "OK"
-    res.statusMessage = 'OK';
+    res.statusMessage = "OK";
     res.writeHead( res.statusCode, { 'Content-Type' : 'text/plain' });
     res.end(res.statusCode + ' ' + res.statusMessage);
-
     
 })
 
@@ -94,9 +93,7 @@ function flipACoin(call) {
   }
 
 
-
-
-app.get('/app/flip', (req, res) => {
+app.get('/app/flip/', (req, res) => {
    var flip = coinFlip()
    res.status(200).json({ 'flip' : flip })
 })  
@@ -110,11 +107,13 @@ app.get('/app/flips/:number', (req, res) => {
 )
 
 app.get('/app/flip/call/heads', (req, res) => {
-    res.status(200).json(flipACoin("heads"))
+    const flipRandomCoin = flipACoin("heads")
+    res.status(200).json( {"call": flipRandomCoin.call, "flip": flipRandomCoin.flip, "result": flipRandomCoin.result})
 })
 
 app.get('/app/flip/call/tails', (req, res) => {
-    res.status(200).json(flipACoin("tails"))
+    const flipRandomCoin = flipACoin("tails")
+    res.status(200).json( {"call": flipRandomCoin.call, "flip": flipRandomCoin.flip, "result": flipRandomCoin.result})
 })
 
 
